@@ -22,8 +22,6 @@ export class Game {
         this.timerEnemy = 0
         this.audio = new Audio('./assets/explosion/explosion.ogg')
         
-        
-
     }
     update() {
         // Add Enemy

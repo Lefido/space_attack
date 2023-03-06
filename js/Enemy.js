@@ -10,7 +10,7 @@ export class Enemy {
         this.height = 48
         this.frameX = Math.floor(Math.random() * 6)
         this.frameY = 0
-        this.velocity = Math.random() * 1 + 1
+        this.velocity = Math.random() * 2 + 1
         // this.x = x // (Math.random() * this.game.width) - this.width
         this.y = y
         this.dx = Math.random() * 2 + 1
