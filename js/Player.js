@@ -72,12 +72,13 @@ export class Player {
         // Acceleration
         this.accelerations.forEach(acceletation => acceletation.draw(context))
         // Vaisseau
+        context.drawImage(this.image,this.frameX * this.frameWidth, this.frameY * this.frameHeight, this.frameWidth, this.frameHeight, this.x, this.y, this.width, this.height)
+        // Barre de vie
         context.save()
         context.fillStyle = "red"
         context.rect(10, 10, this.life * this.width / 100, 5)
         context.fill()
         context.restore()
-        context.drawImage(this.image,this.frameX * this.frameWidth, this.frameY * this.frameHeight, this.frameWidth, this.frameHeight, this.x, this.y, this.width, this.height)
     }
 
     addAcceleration() {
