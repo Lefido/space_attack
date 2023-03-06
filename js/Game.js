@@ -5,6 +5,7 @@ import { Explosion1, Explosion2, Explosion3 } from "./Explosion.js"
 import { Player } from "./Player.js"
 import { Enemy } from "./Enemy.js"
 import { Impact_1, Impact_2, Impact_3, Impact_4 } from "./Impact.js"
+import { SoundImpactEnemy, SoundExplosion } from "./Sound.js"
 
 export class Game {
     constructor(width, height) {
@@ -15,12 +16,13 @@ export class Game {
         this.explosions = []
         this.impacts = []
         this.enemys = []
+        this.sounds = []
         this.player = new Player(this)
         this.inputKey = new InputKeys(this)
         this.speed = 0
         this.speedX = 0
         this.timerEnemy = 0
-        this.audio = new Audio('./assets/explosion/explosion.ogg')
+        this.music = new Audio('./assets/sounds/music.mp3')
         
     }
     update() {
@@ -39,6 +41,7 @@ export class Game {
         // Enemy
         this.enemys.forEach(enemy => enemy.update())
         this.enemys = this.enemys.filter(enemy => !enemy.markedForDeletion)
+        console.log('List enemys', this.enemys )
         // Impact
         this.impacts.forEach(impact => impact.update())
         this.impacts.filter(impact => !impact.markedForDeletion)
@@ -51,21 +54,35 @@ export class Game {
             this.enemys.forEach( enemy => {
                 if (this.checkCollision(projectile, enemy)) {
                     enemy.life--
+                    this.sounds.push(new SoundImpactEnemy())
                     this.addImpact(projectile.x, projectile.y)
                     if (enemy.life < 1) {
                         enemy.markedForDeletion = true
-                        this.addExplosion(enemy.x, enemy.y)
+                        this.addExplosion(enemy.x + enemy.width * 0.5, enemy.y + enemy.height * 0.5)
                 
                     }
-                    
                     projectile.markedForDeletion = true
-                    
-                    console.log('Enemy touché')
                 }
 
             })
 
         })
+        // Check Collision Player Enemy
+        this.enemys.forEach( enemy => {
+            if (this.checkCollision(enemy, this.player)) {
+                this.player.life -= enemy.life
+                enemy.markedForDeletion = true
+                this.addExplosion(enemy.x + enemy.width * 0.5, enemy.y + enemy.height * 0.5)
+                console.log('Player percute enemys')
+            }
+        })
+
+        //Sounds
+        this.sounds.forEach(sound => {
+            sound.lecture()
+            sound.markedForDeletion = true
+        })
+        this.sounds = this.sounds.filter(sound => !sound.markedForDeletion)
 
     }
     draw(context) {
@@ -100,12 +117,12 @@ export class Game {
 
         this.timerEnemy = 0
        
-
     }
 
     addExplosion(x, y) {
 
-        this.audio.play();
+        
+        this.sounds.push(new SoundExplosion())
 
         let numberExplosion = Math.floor(Math.random() * 5 + 2)
 

@@ -16,6 +16,7 @@ export class InputKeys {
 
             if (e.code == 'Space' && this.game.keys['Space'] === true) {
                 this.game.player.addProjectile()
+                this.game.player.addSoundShoot()
             }
 
             this.game.keys[e.code] = false

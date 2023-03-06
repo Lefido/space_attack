@@ -1,11 +1,11 @@
 
 
+
 export class Projectile {
     constructor(game, x, y) {
         this.game = game
-        
-        
         this.markedForDeletion = false;
+        
         
 
     }
