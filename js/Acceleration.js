@@ -26,14 +26,14 @@ export class Acceleration {
     }
     draw(context) {
 
-        
+       
         context.beginPath();
         let col = Math.round(Math.random() * 50 + 200)
         context.fillStyle = `hsl(${col}, 80%, 50%)`
         context.arc(this.x, this.y , this.size ,0,Math.PI*1,true);
         context.fill();
         context.stroke();
-
+       
         // context.drawImage(this.image, this.frameX * this.width , this.frameY * this.height, this.width, this.height, this.x - this.size /2, this.y - this.size / 2, this.size, this.size)
         
     }

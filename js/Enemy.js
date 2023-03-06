@@ -20,7 +20,7 @@ export class Enemy {
         this.projectiles = []
         this.markedForDeletion = false
         this.life = 5
-        console.log(this.game.player.width)
+        
     }
     update() {
 

@@ -1,6 +1,7 @@
 
 import { Acceleration } from "./Acceleration.js"
 import { Projectile_1, Projectile_2, Projectile_3, Projectile_4, Projectile_5} from "./Projectile.js"
+import { SoundShootPlayer } from "./Sound.js";
 
 export class Player {
     constructor(game) {
@@ -21,6 +22,8 @@ export class Player {
         this.y = this.game.height - this.height - 10
         this.accelerations = []
         this.projectiles = []
+        this.shoots = []
+        this.life = 100
        
     }
     update() {
@@ -63,13 +66,17 @@ export class Player {
             if (this.frameX >= this.frameMaxX) this.frameX = 0
         }
 
+
     }
     draw(context) {
         // Acceleration
         this.accelerations.forEach(acceletation => acceletation.draw(context))
         // Vaisseau
-        // context.drawImage(this.image, this.x, this.y, this.width, this.height)
-
+        context.save()
+        context.fillStyle = "red"
+        context.rect(10, 10, this.life * this.width / 100, 5)
+        context.fill()
+        context.restore()
         context.drawImage(this.image,this.frameX * this.frameWidth, this.frameY * this.frameHeight, this.frameWidth, this.frameHeight, this.x, this.y, this.width, this.height)
     }
 
@@ -88,6 +95,7 @@ export class Player {
     addProjectile() {
 
         let numProjectile = Math.random() * 1
+        this.shoots.push(this.shootPlayer)
 
         if (numProjectile < 0.20) {
             this.projectiles.push(new Projectile_1(this.game, this.x + this.width * 0.5 , this.y))
@@ -105,4 +113,10 @@ export class Player {
 
 
     }
+
+
+    addSoundShoot() {
+        this.game.sounds.push(new SoundShootPlayer())
+    }
+
 }

@@ -24,6 +24,8 @@ window.addEventListener('load', function() {
     
     game.newStars()
 
+    game.music.play()
+    game.music.loop = true
    function animate() {
 
     window.addEventListener('resize', function() {

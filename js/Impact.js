@@ -22,7 +22,6 @@ export class Impact {
 
     update() {
 
-        if (this.frameX === 0) this.audio.play()
         this.speedY += this.gravity
         this.x += this.speedX
         this.y += this.speedY
@@ -55,7 +54,6 @@ export class Impact_1 extends Impact {
         this.width = 192
         this.height = 192
         this.image = document.getElementById('impact1')
-        this.audio = new Audio('./assets/impact/impact1.mp3')
     }
 
 }
@@ -66,7 +64,6 @@ export class Impact_2 extends Impact {
         this.width = 192
         this.height = 192
         this.image = document.getElementById('impact2')
-        this.audio = new Audio('./assets/impact/impact2.mp3')
     }
 
 }
@@ -77,7 +74,6 @@ export class Impact_3 extends Impact {
         this.width = 192
         this.height = 192
         this.image = document.getElementById('impact3')
-        this.audio = new Audio('./assets/impact/impact3.mp3')
     }
 
 }
@@ -88,7 +84,7 @@ export class Impact_4 extends Impact {
         this.width = 192
         this.height = 192
         this.image = document.getElementById('impact4')
-        this.audio = new Audio('./assets/impact/impact4.mp3')
+        
     }
 
 }
