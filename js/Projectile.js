@@ -6,8 +6,6 @@ export class Projectile {
         this.game = game
         this.markedForDeletion = false;
         
-        
-
     }
     update() {
     
@@ -50,7 +48,7 @@ export class Projectile_1 extends Projectile {
         this.maxFrameY = 0
         this.width = 48
         this.height = 48
-        this.degat = 3
+        this.degat = 1
         this.velocity = 8
         this.scaleX = 25
         this.scaleY = 25
@@ -71,7 +69,7 @@ export class Projectile_2 extends Projectile {
         this.maxFrameY = 0
         this.width = 48
         this.height = 48
-        this.degat = 6
+        this.degat = 2
         this.velocity = 8
         this.scaleX = 25
         this.scaleY = 25
@@ -92,7 +90,7 @@ export class Projectile_3 extends Projectile {
         this.maxFrameY = 0
         this.width = 48
         this.height = 48
-        this.degat = 9
+        this.degat = 4
         this.velocity = 8
         this.scaleX = 25
         this.scaleY = 25
@@ -115,7 +113,7 @@ export class Projectile_4 extends Projectile {
         this.maxFrameY = 0
         this.width = 30
         this.height = 60
-        this.degat = 10
+        this.degat = 6
         this.velocity = 10
         this.scaleX = 20
         this.scaleY = 45
@@ -136,7 +134,7 @@ export class Projectile_5 extends Projectile {
         this.maxFrameY = 0
         this.width = 30
         this.height = 60
-        this.degat = 12
+        this.degat = 8
         this.velocity = 12
         this.scaleX = 20
         this.scaleY = 45

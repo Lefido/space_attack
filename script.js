@@ -2,14 +2,13 @@
 
 import { Game } from "./js/Game.js";
 
-
 window.addEventListener('load', function() {
 
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
 
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    canvas.width = 1280 // window.innerWidth
+    canvas.height = 900 // window.innerHeight
 
     window.addEventListener('click', (event)=> {
         let x = event.x
@@ -19,8 +18,8 @@ window.addEventListener('load', function() {
     });
 
     window.addEventListener('resize', ()=> {
-        game.width = window.innerWidth;
-        game.height = window.innerHeight;
+        game.width = 1280 //window.innerWidth
+        game.height = 900 // window.innerHeight
 
     })
 

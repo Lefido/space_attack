@@ -43,7 +43,7 @@ export class Game {
         // Enemy
         this.enemys.forEach(enemy => enemy.update())
         this.enemys = this.enemys.filter(enemy => !enemy.markedForDeletion)
-        console.log('List enemys', this.enemys )
+        console.log('List enemys', this.enemys.length )
         // Impact
         this.impacts.forEach(impact => impact.update())
         this.impacts.filter(impact => !impact.markedForDeletion)
@@ -55,7 +55,7 @@ export class Game {
 
             this.enemys.forEach( enemy => {
                 if (this.checkCollision(projectile, enemy)) {
-                    enemy.life--
+                    enemy.life -= projectile.degat
                     this.sounds.push(new SoundImpactEnemy())
                     this.addImpact(projectile.x, projectile.y)
                     if (enemy.life < 1) {
@@ -75,7 +75,6 @@ export class Game {
                 this.player.life -= enemy.life
                 enemy.markedForDeletion = true
                 this.addExplosion(enemy.x + enemy.width * 0.5, enemy.y + enemy.height * 0.5)
-                console.log('Player percute enemys')
             }
         })
 
@@ -114,7 +113,7 @@ export class Game {
         let numberEnemy = Math.random() * 10
         for (let i = 0; i < numberEnemy; i++) {
             let y = (0  - this.player.height) - i * this.player.height
-            this.enemys.push(new Enemy(this, this.player.x + this.player.width / 2, y))
+            this.enemys.push(new Enemy(this))
         }
 
         this.timerEnemy = 0

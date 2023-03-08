@@ -8,12 +8,12 @@ export class Acceleration {
         this.speedX = Math.random() * 2 - 1
         this.speedY = Math.random() * 6 - 3
         this.size = Math.random() * 6 + 1
-        this.gravity = 0.9
+        // this.gravity = 0.9
         this.markedForDeletion = false;
 
     }
     update() {
-        this.speedY += this.gravity
+        // this.speedY += this.gravity
         this.x += this.speedX
         this.y += this.speedY
     
