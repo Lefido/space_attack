@@ -11,28 +11,27 @@ window.addEventListener('load', function() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
-
-
-    window.addEventListener('click', function(event) {
+    window.addEventListener('click', (event)=> {
         let x = event.x
         let y = event.y
         game.addExplosion(x, y)
    
     });
 
+    window.addEventListener('resize', ()=> {
+        game.width = window.innerWidth;
+        game.height = window.innerHeight;
+
+    })
+
     const game = new Game(canvas.width, canvas.height)
     
     game.newStars()
 
-    game.music.play()
+    if (game.soundActif) game.music.play()
     game.music.loop = true
+    
    function animate() {
-
-    window.addEventListener('resize', function() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
-    })
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 

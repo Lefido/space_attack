@@ -39,13 +39,12 @@ export class Star {
         // context.fillStyle = 'white'
         // context.fillRect(this.x, this.y, this.size, this.size)
         
-        context.save()
+        
         context.beginPath();
         context.fillStyle = `rgba(255, 255, 255, 0.${this.color})`; //red
         context.arc(this.x, this.y , this.size ,0,Math.PI*2,true);
         context.fill();
         context.stroke();
-        context.restore()
     
     }
 }

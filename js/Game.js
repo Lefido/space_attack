@@ -22,7 +22,9 @@ export class Game {
         this.speed = 0
         this.speedX = 0
         this.timerEnemy = 0
+        this.soundActif = false
         this.music = new Audio('./assets/sounds/music.mp3')
+        
         
     }
     update() {
@@ -79,7 +81,7 @@ export class Game {
 
         //Sounds
         this.sounds.forEach(sound => {
-            sound.lecture()
+            if (this.soundActif) sound.lecture()
             sound.markedForDeletion = true
         })
         this.sounds = this.sounds.filter(sound => !sound.markedForDeletion)
@@ -112,7 +114,7 @@ export class Game {
         let numberEnemy = Math.random() * 10
         for (let i = 0; i < numberEnemy; i++) {
             let y = (0  - this.player.height) - i * this.player.height
-            this.enemys.push(new Enemy(this, this.player.x, y))
+            this.enemys.push(new Enemy(this, this.player.x + this.player.width / 2, y))
         }
 
         this.timerEnemy = 0

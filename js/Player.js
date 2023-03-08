@@ -74,11 +74,10 @@ export class Player {
         // Vaisseau
         context.drawImage(this.image,this.frameX * this.frameWidth, this.frameY * this.frameHeight, this.frameWidth, this.frameHeight, this.x, this.y, this.width, this.height)
         // Barre de vie
-        context.save()
         context.fillStyle = "red"
         context.rect(10, 10, this.life * this.width / 100, 5)
         context.fill()
-        context.restore()
+
     }
 
     addAcceleration() {

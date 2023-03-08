@@ -13,9 +13,9 @@ export class Enemy {
         this.velocity = Math.random() * 2 + 1
         // this.x = x // (Math.random() * this.game.width) - this.width
         this.y = y
-        this.dx = Math.random() * 2 + 1
+        this.dx = Math.random() * 5 + 0
         this.sin = 0
-        this.x = (x - this.game.player.width * 3) + this.dx * Math.sin(this.sin)
+        this.x = x - game.player.width / 2
         this.accelerations = []
         this.projectiles = []
         this.markedForDeletion = false
@@ -24,8 +24,8 @@ export class Enemy {
     }
     update() {
 
-        this.sin += this.velocity / 100
-        this.x = this.x + this.dx * Math.sin(this.sin)
+        this.sin += .05
+        // this.x += this.dx * Math.sin(this.sin)
         this.y += this.velocity
         if (this.y > this.game.height) this.markedForDeletion = true
       
