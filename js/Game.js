@@ -22,7 +22,7 @@ export class Game {
         this.speed = 0
         this.speedX = 0
         this.timerEnemy = 0
-        this.soundActif = false
+        this.soundActif = true
         this.music = new Audio('./assets/sounds/music.mp3')
         
         
