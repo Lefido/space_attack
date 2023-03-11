@@ -27,7 +27,7 @@ export class Game {
         this.inputKey = new InputKeys(this)
         this.speed = 0
         this.speedX = 0
-        this.timerEnemy = 0
+        this.timerEnemy = 0 
         this.soundActif = true
         this.music = new Audio('./assets/sounds/music.mp3')
         this.score = 0

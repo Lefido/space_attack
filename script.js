@@ -8,7 +8,7 @@ window.addEventListener('load', function() {
     const ctx = canvas.getContext('2d');
 
     canvas.width = window.innerWidth
-    canvas.height = 800 //window.innerHeight
+    canvas.height = window.innerHeight
 
     window.addEventListener('click', (event)=> {
         let x = event.x
@@ -19,7 +19,7 @@ window.addEventListener('load', function() {
 
     window.addEventListener('resize', ()=> {
         game.width = window.innerWidth
-        game.height = 800 //window.innerHeight
+        game.height = window.innerHeight
 
     })
 
