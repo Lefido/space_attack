@@ -8,7 +8,8 @@ export class Star {
         this.y = Math.random() * this.game.height
         this.vY = Math.random() * 10 + 2
         this.size = Math.random() * 2 + 1
-        this.color = Math.round(Math.random() * 900)
+        this.color = Math.round(Math.random() * 1)
+       
 
     }
     update() {
@@ -35,15 +36,14 @@ export class Star {
     }
     draw(context) {
 
-    
-        // context.fillStyle = 'white'
-        // context.fillRect(this.x, this.y, this.size, this.size)
         
         context.beginPath();
         context.fillStyle = `rgba(255, 255, 255, 0.${this.color})`; //red
+        context.strokeStyle = "transparent"
         context.arc(this.x, this.y , this.size ,0,Math.PI*2);
         context.fill();
         context.stroke();
+        console.log(this.color)
     
     }
 }

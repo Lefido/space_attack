@@ -13,7 +13,7 @@ export class Player {
         this.frameMaxX = 8
         this.frameX = 0
         this.frameY = 0
-        this.width = 60
+        this.width = 55
         this.height = 80
         this.timerFrame = 0
         this.velocity = 6
@@ -26,7 +26,6 @@ export class Player {
         this.lifeMax = 100
         this.life = this.lifeMax
         
-       
     }
     update() {
 
@@ -75,7 +74,7 @@ export class Player {
     addAcceleration() {
         let nbParticule = 2
         let distance = 12
-        let color = "rgb(97, 217, 28,0.4)"
+        let color = "rgb(97, 217, 28,0.3)"
         for (let i = 0; i < nbParticule; i++) {
             this.game.accelerations.push(new Acceleration(this.x + this.width * 0.05, this.y + this.height + distance, color))
         }

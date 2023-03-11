@@ -32,7 +32,8 @@ export class Acceleration {
         let col = Math.round(Math.random() * 50 + 200)
         // context.fillStyle = `hsl(${col}, 80%, 50%)`
         context.fillStyle = this.color
-        context.arc(this.x, this.y , this.size ,0,Math.PI*1,true);
+        context.strokeStyle = "transparent"
+        context.arc(this.x, this.y , this.size ,0,Math.PI*2,true);
         context.fill();
         context.stroke();
        

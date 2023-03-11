@@ -8,9 +8,9 @@ export class Enemy {
         this.image = document.getElementById('enemys')
         this.width = 53
         this.height = 48
-        this.frameX = Math.floor(Math.random() * 6)
+        this.frameX = Math.floor(Math.random() * 10)
         this.frameY = 0
-        this.attraction = Math.random() * 150  + 50
+        this.attraction = Math.random() * 180 + 50
         this.x = Math.random() * (this.game.width - this.width)
         this.y = - this.height * this.frameX
         this.life = 10 + this.frameX * 2
@@ -35,7 +35,7 @@ export class Enemy {
 
         if (this.y > this.game.player.y - this.game.player.height * 2 ||
             this.x + this.width > this.game.player.x &&
-            this.x < this.game.player.x + this.game.player.width) {
+            this.x < this.game.player.x + this.game.player.width && this.y > this.game.player.y - this.game.player.height * 6) {
             this.vy += this.gravity
             this.addAcceleration()
             if (!this.racer) {

@@ -9,7 +9,8 @@ export class Planet {
     }
     update() {
     
-        this.y += this.gravity + this.game.speed * 4
+        // this.x += this.game.speedX / 5
+        this.y += this.gravity
         this.y++
         
         if (this.y > this.game.height) {
@@ -69,7 +70,8 @@ export class Planet_3 extends Planet {
         this.width = this.size
         this.height = this.width
 
-        this.x = Math.random() * (this.game.width - this.width) - ((this.game.width - this.width) / 2)
+        let px = Math.random() * (this.game.width - this.width) - ((this.game.width - this.width) / 2)
+        this.x = this.game.width / 2 + px
         this.y = - this.height
         this.gravity = this.size / (this.size * 2)
 

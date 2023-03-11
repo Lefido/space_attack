@@ -41,3 +41,21 @@ export class SoundExplosion extends Sound {
         this.audio.volume = 0.5
     }
 }
+
+export class SoundSirene extends Sound {
+    constructor() {
+        super()
+ 
+        this.audio = new Audio("./assets/sounds/sirene.mp3")
+        this.audio.volume = 0.4
+    }
+}
+
+export class SoundDanger extends Sound {
+    constructor() {
+        super()
+ 
+        this.audio = new Audio("./assets/sounds/danger.mp3")
+        this.audio.volume = 0.2
+    }
+}

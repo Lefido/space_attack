@@ -5,7 +5,7 @@ import { Explosion1, Explosion2, Explosion3 } from "./Explosion.js"
 import { Player } from "./Player.js"
 import { Enemy } from "./Enemy.js"
 import { Impact_1, Impact_2, Impact_3, Impact_4 } from "./Impact.js"
-import { SoundImpactEnemy, SoundExplosion } from "./Sound.js"
+import { SoundImpactEnemy, SoundExplosion, SoundDanger, SoundSirene } from "./Sound.js"
 import { Planet_1, Planet_2, Planet_3, Planet_4, Planet_5, Planet_6, Planet_7, Planet_8 } from "./Planet.js"
 
 export class Game {
@@ -37,7 +37,7 @@ export class Game {
         this.timerPlanet++
         if (this.timerEnemy % 200 === 0 && this.enemys.length === 0) this.addEnemy()
         // Planet
-        if (this.timerPlanet % 1000 === 0 && this.planets.length === 0) {
+        if (this.timerPlanet % 1000 === 0 && this.planets.length < 2) {
             this.addPlanet()
         }
         this.planets.forEach(planet => planet.update())
@@ -192,6 +192,10 @@ export class Game {
     }
 
     addEnemy() {
+
+
+        this.sounds.push(new SoundSirene())
+
         let numberEnemy = Math.random() * 10
         for (let i = 0; i < numberEnemy; i++) {
             let y = (0  - this.player.height) - i * this.player.height
