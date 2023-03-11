@@ -23,13 +23,14 @@ export class Player {
         this.accelerations = []
         this.projectiles = []
         this.shoots = []
-        this.life = 100
+        this.lifeMax = 100
+        this.life = this.lifeMax
+        
        
     }
     update() {
 
         // Gestion du clavier
-
         if (this.game.keys['ArrowUp'] && this.y > 0) {
             this.y -= this.velocity
             this.game.speed = 0.2
@@ -52,12 +53,6 @@ export class Player {
 
         if (this.game.keys['ArrowLeft'] === false && this.game.keys['ArrowRight'] === false )  this.game.speedX = 0
 
-
-        // Update acceleration
-        this.accelerations.forEach(acceletation=> acceletation.update())
-        this.accelerations = this.accelerations.filter(acceleration => !acceleration.markedForDeletion);
-
-        
         this.timerFrame++
 
         if (this.timerFrame % 2 === 0) {
@@ -69,26 +64,24 @@ export class Player {
 
     }
     draw(context) {
-        // Acceleration
-        this.accelerations.forEach(acceletation => acceletation.draw(context))
+
+       
         // Vaisseau
         context.drawImage(this.image,this.frameX * this.frameWidth, this.frameY * this.frameHeight, this.frameWidth, this.frameHeight, this.x, this.y, this.width, this.height)
-        // Barre de vie
-        context.fillStyle = "red"
-        context.rect(10, 10, this.life * this.width / 100, 5)
-        context.fill()
+        
 
     }
 
     addAcceleration() {
         let nbParticule = 2
         let distance = 12
+        let color = "rgb(97, 217, 28,0.4)"
         for (let i = 0; i < nbParticule; i++) {
-            this.accelerations.push(new Acceleration(this.x + this.width * 0.05, this.y + this.height + distance))
+            this.game.accelerations.push(new Acceleration(this.x + this.width * 0.05, this.y + this.height + distance, color))
         }
 
         for (let i = 0; i < nbParticule; i++) {
-            this.accelerations.push(new Acceleration(this.x + this.width * 0.93, this.y + this.height + distance))
+            this.game.accelerations.push(new Acceleration(this.x + this.width * 0.93, this.y + this.height + distance, color))
         }
     }
 

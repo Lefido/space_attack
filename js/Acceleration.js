@@ -1,10 +1,11 @@
 
 
 export class Acceleration {
-    constructor(x, y) {
+    constructor(x, y, color) {
 
         this.x = x
         this.y = y
+        this.color = color
         this.speedX = Math.random() * 2 - 1
         this.speedY = Math.random() * 6 - 3
         this.size = Math.random() * 6 + 1
@@ -29,7 +30,8 @@ export class Acceleration {
        
         context.beginPath();
         let col = Math.round(Math.random() * 50 + 200)
-        context.fillStyle = `hsl(${col}, 80%, 50%)`
+        // context.fillStyle = `hsl(${col}, 80%, 50%)`
+        context.fillStyle = this.color
         context.arc(this.x, this.y , this.size ,0,Math.PI*1,true);
         context.fill();
         context.stroke();

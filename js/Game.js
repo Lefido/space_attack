@@ -17,13 +17,15 @@ export class Game {
         this.impacts = []
         this.enemys = []
         this.sounds = []
+        this.accelerations = []
         this.player = new Player(this)
         this.inputKey = new InputKeys(this)
         this.speed = 0
         this.speedX = 0
         this.timerEnemy = 0
-        this.soundActif = true
+        this.soundActif = false
         this.music = new Audio('./assets/sounds/music.mp3')
+        this.score = 0
         
         
     }
@@ -33,6 +35,9 @@ export class Game {
         if (this.timerEnemy % 200 === 0 && this.enemys.length === 0) this.addEnemy()
         // Etoiles filantes
         this.stars.forEach(star => { star.update() })
+         // Update acceleration
+         this.accelerations.forEach(acceletation=> acceletation.update())
+         this.accelerations = this.accelerations.filter(acceleration => !acceleration.markedForDeletion);
         // Projectiles
         this.player.projectiles.forEach(projectile => {
             projectile.update()
@@ -58,7 +63,9 @@ export class Game {
                     enemy.life -= projectile.degat
                     this.sounds.push(new SoundImpactEnemy())
                     this.addImpact(projectile.x, projectile.y)
+                    
                     if (enemy.life < 1) {
+                        this.score += enemy.lifeMax
                         enemy.markedForDeletion = true
                         this.addExplosion(enemy.x + enemy.width * 0.5, enemy.y + enemy.height * 0.5)
                 
@@ -72,7 +79,8 @@ export class Game {
         // Check Collision Player Enemy
         this.enemys.forEach( enemy => {
             if (this.checkCollision(enemy, this.player)) {
-                this.player.life -= enemy.life
+                this.player.life -= enemy.life / 2
+                if (this.player.life <= 0) this.player.life = this.player.lifeMax
                 enemy.markedForDeletion = true
                 this.addExplosion(enemy.x + enemy.width * 0.5, enemy.y + enemy.height * 0.5)
             }
@@ -89,6 +97,35 @@ export class Game {
     draw(context) {
         // Etoiles filantes
         this.stars.forEach(star => { star.draw(context) })
+        // Barre de vie et score
+        context.beginPath()
+        context.font = '48px serif';
+        context.textAlign = "left"
+        context.fillStyle = "white"
+        context.fillText('Score ' + this.score, 10, 50);
+        context.closePath()
+
+        context.beginPath()
+        context.fillStyle = "gray"
+        context.rect(10, 70, this.player.lifeMax * (this.player.width * 2.5) / 100, 10)
+        context.fill()
+        context.closePath()
+
+        context.beginPath()
+        let radial = context.createRadialGradient(0,50,0,50,100,100);
+        
+        radial.addColorStop(0,'#FF3349'); //rouge
+        radial.addColorStop(1,'#5BFF33'); //vert
+        
+        
+        // radial.addColorStop(2, '#FF3349'); //Rouge
+        context.fillStyle = radial
+        context.rect(10, 70, this.player.life * (this.player.width * 2.5) / 100, 10)
+        context.fill()
+        context.closePath()
+        
+        // Acceleration
+        this.accelerations.forEach(acceletation => acceletation.draw(context))
         // Projectile
         this.player.projectiles.forEach(projectile =>  projectile.draw(context))
         // Player

@@ -14,6 +14,7 @@ export class Enemy {
         this.x = Math.random() * (this.game.width - this.width)
         this.y = - this.height * this.frameX
         this.life = 10 + this.frameX * 2
+        this.lifeMax = this.life
         this.markedForDeletion = false
         this.vy = Math.random() * 3 + 2
         this.gravity = Math.random() * 0.2 + 0.1
@@ -41,15 +42,8 @@ export class Enemy {
 
         if (this.y > this.game.height) this.markedForDeletion = true
 
-        // Update acceleration
-        this.accelerations.forEach(acceletation=> acceletation.update())
-        this.accelerations = this.accelerations.filter(acceleration => !acceleration.markedForDeletion);
-      
     }
     draw(context) {
-
-        // Acceleration
-        this.accelerations.forEach(acceletation => acceletation.draw(context))
 
         context.drawImage(this.image,this.width * this.frameX, this.width * this.frameY, this.width, this.height, this.x, this.y, this.width, this.height)
         context.font = "bold 18px serif";
@@ -65,8 +59,10 @@ export class Enemy {
     addAcceleration() {
         let nbParticule = 2
         let distance = 12
+        let color = "rgb(237, 192, 43,0.4)"
+        
         for (let i = 0; i < nbParticule; i++) {
-            this.accelerations.push(new Acceleration(this.x + this.width * 0.5, this.y))
+            this.game.accelerations.push(new Acceleration(this.x + this.width * 0.5, this.y, color))
         }
 
     }
