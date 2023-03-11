@@ -16,9 +16,11 @@ export class Enemy {
         this.life = 10 + this.frameX * 2
         this.lifeMax = this.life
         this.markedForDeletion = false
-        this.vy = Math.random() * 3 + 2
+        this.vy = Math.random() * 2 + 1
         this.gravity = Math.random() * 0.2 + 0.1
         this.accelerations = []
+        this.soundRacer = new Audio('./assets/enemys/racer.mp3')
+        this.racer = false
         
         
     }
@@ -36,7 +38,12 @@ export class Enemy {
             this.x < this.game.player.x + this.game.player.width) {
             this.vy += this.gravity
             this.addAcceleration()
-        }
+            if (!this.racer) {
+                this.addRacer()
+                this.racer = true
+            }
+
+        } else this.racer = false 
 
         this.y += this.vy
 
@@ -65,6 +72,12 @@ export class Enemy {
             this.game.accelerations.push(new Acceleration(this.x + this.width * 0.5, this.y, color))
         }
 
+    }
+
+    addRacer() {
+
+        if (this.game.soundActif) this.soundRacer.play();
+      
     }
 
 }

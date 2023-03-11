@@ -18,6 +18,7 @@ export class SoundShootPlayer extends Sound {
         super()
 
         this.audio = new Audio("./assets/sounds/shootplayer.wav")
+        this.audio.volume = 0.5
 
     }
 }
@@ -27,6 +28,7 @@ export class SoundImpactEnemy extends Sound {
         super()
 
         this.audio = new Audio("./assets/sounds/impact2.mp3")
+        this.audio.volume = 0.5
 
     }
 }
@@ -36,6 +38,6 @@ export class SoundExplosion extends Sound {
         super()
  
         this.audio = new Audio("./assets/sounds/explosion.mp3")
-
+        this.audio.volume = 0.5
     }
 }

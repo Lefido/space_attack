@@ -17,7 +17,6 @@ export class Impact {
         this.interval = 1000/this.fps
         this.timer = 0
        
-
     }
 
     update() {
