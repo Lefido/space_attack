@@ -30,7 +30,6 @@ export class Game {
         this.score = 0
         this.timerPlanet = 0
         
-        
     }
     update() {
         // Add Enemy
@@ -205,7 +204,6 @@ export class Game {
 
     addExplosion(x, y) {
 
-        
         this.sounds.push(new SoundExplosion())
 
         let numberExplosion = Math.floor(Math.random() * 5 + 2)
