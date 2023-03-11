@@ -7,7 +7,7 @@ export class Star {
         this.x = Math.random() * this.game.width
         this.y = Math.random() * this.game.height
         this.vY = Math.random() * 10 + 2
-        this.size = Math.random() * 2 + 1
+        this.size = Math.random() * 1 + 0.5
         this.color = Math.round(Math.random() * 1)
        
 
