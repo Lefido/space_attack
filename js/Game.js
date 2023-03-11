@@ -6,6 +6,7 @@ import { Player } from "./Player.js"
 import { Enemy } from "./Enemy.js"
 import { Impact_1, Impact_2, Impact_3, Impact_4 } from "./Impact.js"
 import { SoundImpactEnemy, SoundExplosion } from "./Sound.js"
+import { Planet_1, Planet_2, Planet_3, Planet_4, Planet_5, Planet_6, Planet_7, Planet_8 } from "./Planet.js"
 
 export class Game {
     constructor(width, height) {
@@ -13,6 +14,7 @@ export class Game {
         this.height = height
         this.stars = []
         this.keys = []
+        this.planets = []
         this.explosions = []
         this.impacts = []
         this.enemys = []
@@ -26,15 +28,24 @@ export class Game {
         this.soundActif = true
         this.music = new Audio('./assets/sounds/music.mp3')
         this.score = 0
+        this.timerPlanet = 0
         
         
     }
     update() {
         // Add Enemy
         this.timerEnemy++
+        this.timerPlanet++
         if (this.timerEnemy % 200 === 0 && this.enemys.length === 0) this.addEnemy()
+        // Planet
+        if (this.timerPlanet % 1000 === 0 && this.planets.length === 0) {
+            this.addPlanet()
+        }
+        this.planets.forEach(planet => planet.update())
+        this.planets = this.planets.filter(planet => !planet.markedForDeletion)
         // Etoiles filantes
         this.stars.forEach(star => { star.update() })
+        
          // Update acceleration
          this.accelerations.forEach(acceletation=> acceletation.update())
          this.accelerations = this.accelerations.filter(acceleration => !acceleration.markedForDeletion);
@@ -48,7 +59,6 @@ export class Game {
         // Enemy
         this.enemys.forEach(enemy => enemy.update())
         this.enemys = this.enemys.filter(enemy => !enemy.markedForDeletion)
-        console.log('List enemys', this.enemys.length )
         // Impact
         this.impacts.forEach(impact => impact.update())
         this.impacts.filter(impact => !impact.markedForDeletion)
@@ -95,6 +105,8 @@ export class Game {
 
     }
     draw(context) {
+        // Planets
+        this.planets.forEach(planet => planet.draw(context))
         // Etoiles filantes
         this.stars.forEach(star => { star.draw(context) })
         // Barre de vie et score
@@ -116,7 +128,6 @@ export class Game {
         
         radial.addColorStop(0,'#FF3349'); //rouge
         radial.addColorStop(1,'#5BFF33'); //vert
-        
         
         // radial.addColorStop(2, '#FF3349'); //Rouge
         context.fillStyle = radial
@@ -144,6 +155,41 @@ export class Game {
             this.stars.push(new Star(this))
         }
 
+    }
+
+    addPlanet() {
+
+        let numPlanet = Math.floor(Math.random() * 8 + 1)
+        // let numPlanet =  1 // Math.floor(Math.random() * 8 + 1)
+
+        switch(numPlanet) {
+            case 1:
+                this.planets.push(new Planet_1(this))
+                break
+            case 2:
+                this.planets.push(new Planet_2(this))
+                break
+            case 3:
+                this.planets.push(new Planet_3(this))
+                break
+            case 4:
+                this.planets.push(new Planet_4(this))
+                break
+            case 5:
+                this.planets.push(new Planet_5(this))
+                break
+            case 6:
+                this.planets.push(new Planet_6(this))
+                break
+            case 7:
+                this.planets.push(new Planet_7(this))
+                break
+            case 8:
+                this.planets.push(new Planet_8(this))
+                break
+        }
+
+        this.timerPlanet = 0
     }
 
     addEnemy() {
