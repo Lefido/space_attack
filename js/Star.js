@@ -36,14 +36,12 @@ export class Star {
     }
     draw(context) {
 
-        
         context.beginPath();
         context.fillStyle = `rgba(255, 255, 255, 0.${this.color})`; //red
         context.strokeStyle = "transparent"
         context.arc(this.x, this.y , this.size ,0,Math.PI*2);
         context.fill();
         context.stroke();
-        console.log(this.color)
     
     }
 }

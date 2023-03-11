@@ -6,7 +6,10 @@ import { Player } from "./Player.js"
 import { Enemy } from "./Enemy.js"
 import { Impact_1, Impact_2, Impact_3, Impact_4 } from "./Impact.js"
 import { SoundImpactEnemy, SoundExplosion, SoundDanger, SoundSirene } from "./Sound.js"
-import { Planet_1, Planet_2, Planet_3, Planet_4, Planet_5, Planet_6, Planet_7, Planet_8 } from "./Planet.js"
+import { Planet_1, Planet_2, Planet_3,
+    Planet_4, Planet_5, Planet_6, Planet_7, Planet_8,
+    Galaxy_1, Galaxy_2,
+    Nuage } from "./Planet.js"
 
 export class Game {
     constructor(width, height) {
@@ -158,8 +161,10 @@ export class Game {
 
     addPlanet() {
 
-        let numPlanet = Math.floor(Math.random() * 8 + 1)
-        // let numPlanet =  1 // Math.floor(Math.random() * 8 + 1)
+        let numPlanet = Math.floor(Math.random() * 11 + 1)
+        
+        // let numPlanet =  10 // Math.floor(Math.random() * 8 + 1)
+        // console.log(numPlanet)
 
         switch(numPlanet) {
             case 1:
@@ -185,6 +190,15 @@ export class Game {
                 break
             case 8:
                 this.planets.push(new Planet_8(this))
+                break
+            case 9:
+                this.planets.push(new Galaxy_1(this))
+                break
+            case 10:
+                this.planets.push(new Galaxy_2(this))
+                break
+            case 11:
+                this.planets.push(new Nuage(this))
                 break
         }
 

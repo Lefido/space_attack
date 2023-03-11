@@ -100,7 +100,7 @@ export class Planet_5 extends Planet {
         super(game)
 
         this.image = document.getElementById('planet5')
-        this.width = 1024
+        this.width = 1000
         this.size = Math.random() * this.width + 100
         this.width = this.size
         this.height = this.width
@@ -151,6 +151,57 @@ export class Planet_8 extends Planet {
 
         this.image = document.getElementById('planet8')
         this.width = 840
+        this.size = Math.random() * this.width + 100
+        this.width = this.size
+        this.height = this.width
+
+        this.x = Math.random() * (this.game.width - this.width) - ((this.game.width - this.width) / 2)
+        this.y = - this.height
+        this.gravity = this.size / (this.size * 2)
+
+    }
+}
+
+export class Galaxy_1 extends Planet {
+    constructor(game) {
+        super(game)
+
+        this.image = document.getElementById('galaxy1')
+        this.width = 1200
+        this.size = Math.random() * this.width + 100
+        this.width = this.size
+        this.height = this.width
+
+        this.x = Math.random() * (this.game.width - this.width) - ((this.game.width - this.width) / 2)
+        this.y = - this.height
+        this.gravity = this.size / (this.size * 2)
+
+    }
+}
+
+export class Galaxy_2 extends Planet {
+    constructor(game) {
+        super(game)
+
+        this.image = document.getElementById('galaxy2')
+        this.width = 1250
+        this.size = Math.random() * this.width + 100
+        this.width = this.size
+        this.height = this.width
+
+        this.x = Math.random() * (this.game.width - this.width) - ((this.game.width - this.width) / 2)
+        this.y = - this.height
+        this.gravity = this.size / (this.size * 2)
+
+    }
+}
+
+export class Nuage extends Planet {
+    constructor(game) {
+        super(game)
+
+        this.image = document.getElementById('nuage1')
+        this.width = 1260
         this.size = Math.random() * this.width + 100
         this.width = this.size
         this.height = this.width
