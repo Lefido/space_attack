@@ -113,15 +113,15 @@ export class Game {
         this.stars.forEach(star => { star.draw(context) })
         // Barre de vie et score
         context.beginPath()
-        context.font = '48px serif';
+        context.font = '24px serif';
         context.textAlign = "left"
         context.fillStyle = "white"
-        context.fillText('Score ' + this.score, 10, 50);
+        context.fillText('Score : ' + this.score, 10, 25);
         context.closePath()
 
         context.beginPath()
         context.fillStyle = "gray"
-        context.rect(10, 70, this.player.lifeMax * (this.player.width * 2.5) / 100, 10)
+        context.rect(10, 40, this.player.lifeMax * (this.player.width * 1.6) / 100, 10)
         context.fill()
         context.closePath()
 
@@ -133,7 +133,7 @@ export class Game {
         
         // radial.addColorStop(2, '#FF3349'); //Rouge
         context.fillStyle = radial
-        context.rect(10, 70, this.player.life * (this.player.width * 2.5) / 100, 10)
+        context.rect(10, 40, this.player.life * (this.player.width * 1.6) / 100, 10)
         context.fill()
         context.closePath()
         
