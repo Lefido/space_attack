@@ -32,12 +32,14 @@ export class Game {
         this.music = new Audio('./assets/sounds/music.mp3')
         this.score = 0
         this.timerPlanet = 0
+        this.numProjectile = 0
         
     }
     update() {
         // Add Enemy
         this.timerEnemy++
         this.timerPlanet++
+       
         if (this.timerEnemy % 200 === 0 && this.enemys.length === 0) this.addEnemy()
         // Planet
         if (this.timerPlanet % 1000 === 0 && this.planets.length < 2) {
@@ -76,14 +78,17 @@ export class Game {
                     this.sounds.push(new SoundImpactEnemy())
                     this.addImpact(projectile.x, projectile.y)
                     this.score += projectile.degat
+                    this.numProjectile++
                     
                     if (enemy.life < 1) {
                         // this.score += enemy.lifeMax
                         enemy.markedForDeletion = true
                         this.addExplosion(enemy.x + enemy.width * 0.5, enemy.y + enemy.height * 0.5)
+                        this.numProjectile += 10
                 
                     }
                     projectile.markedForDeletion = true
+                    console.log(this.numProjectile)
                 }
 
             })
@@ -96,6 +101,12 @@ export class Game {
                 if (this.player.life <= 0) this.player.life = this.player.lifeMax
                 enemy.markedForDeletion = true
                 this.addExplosion(enemy.x + enemy.width * 0.5, enemy.y + enemy.height * 0.5)
+                this.numProjectile -= 50
+                if (this.numProjectile <= 0 ) {
+                    this.numProjectile = 0
+                }
+                
+                console.log(this.numProjectile)
             }
         })
 

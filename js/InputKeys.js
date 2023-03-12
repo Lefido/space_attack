@@ -14,7 +14,7 @@ export class InputKeys {
 
         document.addEventListener('keyup', (e)=> {
 
-            if (e.code == 'Space' && this.game.keys['Space'] === true) {
+            if (e.code == 'Space' && this.game.keys['Space'] === true && this.game.enemys.length != 0)  {
                 this.game.player.addProjectile()
                 this.game.player.addSoundShoot()
             }

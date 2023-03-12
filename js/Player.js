@@ -98,13 +98,13 @@ export class Player {
         let numProjectile = Math.random() * 1
         this.shoots.push(this.shootPlayer)
 
-        if (this.game.score < 250) {
+        if (this.game.numProjectile < 250) {
             this.projectiles.push(new Projectile_1(this.game, this.x + this.width * 0.5 , this.y))
-        } else if (this.game.score < 500) {
+        } else if (this.game.numProjectile < 500) {
             this.projectiles.push(new Projectile_2(this.game, this.x + this.width * 0.5, this.y))
-        } else if (this.game.score < 750) {
+        } else if (this.game.numProjectile < 1000) {
             this.projectiles.push(new Projectile_3(this.game, this.x + this.width * 0.5, this.y))
-        } else if (this.game.score < 1000) {
+        } else if (this.game.numProjectile < 2000) {
             this.projectiles.push(new Projectile_4(this.game, this.x + this.width * 0.05, this.y+ 35))
             this.projectiles.push(new Projectile_4(this.game, this.x + this.width * 0.92, this.y+ 35))
         } else {
@@ -112,18 +112,7 @@ export class Player {
             this.projectiles.push(new Projectile_5(this.game, this.x + this.width * 0.92, this.y+ 35))
         }
 
-        if (numProjectile < 0.20) {
-           
-        } else if ( numProjectile < 0.40) {
-           
-        } else if ( numProjectile < 0.60) {
-           
-        } else if ( numProjectile < 0.80) {
-         
-        } else if ( numProjectile < 1) {
-         
-        }
-
+       
 
     }
 
