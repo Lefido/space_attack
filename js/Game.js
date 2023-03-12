@@ -75,9 +75,10 @@ export class Game {
                     enemy.life -= projectile.degat
                     this.sounds.push(new SoundImpactEnemy())
                     this.addImpact(projectile.x, projectile.y)
+                    this.score += projectile.degat
                     
                     if (enemy.life < 1) {
-                        this.score += enemy.lifeMax
+                        // this.score += enemy.lifeMax
                         enemy.markedForDeletion = true
                         this.addExplosion(enemy.x + enemy.width * 0.5, enemy.y + enemy.height * 0.5)
                 

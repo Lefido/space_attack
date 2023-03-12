@@ -30,7 +30,7 @@ export class Planet_1 extends Planet {
         super(game)
 
         this.image = document.getElementById('planet1')
-        this.width = 2200
+        this.width = 1000
         this.size = Math.random() * this.width + 100
         this.width = this.size
         this.height = this.width
@@ -48,7 +48,7 @@ export class Planet_2 extends Planet {
         super(game)
 
         this.image = document.getElementById('planet2')
-        this.width = 2048
+        this.width = 1000
         this.size = Math.random() * this.width + 100
         this.width = this.size
         this.height = this.width
@@ -65,7 +65,7 @@ export class Planet_3 extends Planet {
         super(game)
 
         this.image = document.getElementById('planet3')
-        this.width = 900
+        this.width = 1000
         this.size = Math.random() * this.width + 100
         this.width = this.size
         this.height = this.width
@@ -83,7 +83,7 @@ export class Planet_4 extends Planet {
         super(game)
 
         this.image = document.getElementById('planet4')
-        this.width = 800
+        this.width = 1000
         this.size = Math.random() * this.width + 100
         this.width = this.size
         this.height = this.width
@@ -116,7 +116,7 @@ export class Planet_6 extends Planet {
         super(game)
 
         this.image = document.getElementById('planet6')
-        this.width = 800
+        this.width = 1000
         this.size = Math.random() * this.width + 100
         this.width = this.size
         this.height = this.width
@@ -133,7 +133,7 @@ export class Planet_7 extends Planet {
         super(game)
 
         this.image = document.getElementById('planet7')
-        this.width = 840
+        this.width = 1000
         this.size = Math.random() * this.width + 100
         this.width = this.size
         this.height = this.width
@@ -150,7 +150,7 @@ export class Planet_8 extends Planet {
         super(game)
 
         this.image = document.getElementById('planet8')
-        this.width = 840
+        this.width = 1000
         this.size = Math.random() * this.width + 100
         this.width = this.size
         this.height = this.width
@@ -167,7 +167,7 @@ export class Galaxy_1 extends Planet {
         super(game)
 
         this.image = document.getElementById('galaxy1')
-        this.width = 1200
+        this.width = 1000
         this.size = Math.random() * this.width + 100
         this.width = this.size
         this.height = this.width
@@ -184,7 +184,7 @@ export class Galaxy_2 extends Planet {
         super(game)
 
         this.image = document.getElementById('galaxy2')
-        this.width = 1250
+        this.width = 1000
         this.size = Math.random() * this.width + 100
         this.width = this.size
         this.height = this.width
@@ -201,7 +201,7 @@ export class Nuage extends Planet {
         super(game)
 
         this.image = document.getElementById('nuage1')
-        this.width = 1260
+        this.width = 1000
         this.size = Math.random() * this.width + 100
         this.width = this.size
         this.height = this.width
