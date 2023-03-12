@@ -63,7 +63,7 @@ export class Player {
 
         this.timerLife++
 
-        if (this.timerLife % 100 === 0) {
+        if (this.timerLife % 50 === 0) {
             
             if (this.life < this.lifeMax) this.life++
             
