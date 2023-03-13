@@ -20,6 +20,7 @@ window.addEventListener('load', function() {
     window.addEventListener('resize', ()=> {
         game.width = window.innerWidth
         game.height = window.innerHeight
+        game.resize(game.width, game.height)
 
     })
 

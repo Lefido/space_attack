@@ -43,11 +43,18 @@ export class Enemy {
                 this.racer = true
             }
 
-        } else this.racer = false 
+        } else this.racer = false
 
         this.y += this.vy
 
         if (this.y > this.game.height) this.markedForDeletion = true
+
+        if (this.y < -this.height * 4) {
+
+            this.vy = Math.  random() * 2 + 1
+              this.x = Math.random() * (this.game.width - this.width)
+            
+        } 
 
     }
     draw(context) {
@@ -78,6 +85,13 @@ export class Enemy {
 
         if (this.game.soundActif) this.soundRacer.play();
       
+    }
+
+    addShock() {
+        
+        if (this.racer) this.vy -= 8
+            
+            
     }
 
 }

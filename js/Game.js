@@ -79,6 +79,7 @@ export class Game {
                     this.addImpact(projectile.x, projectile.y)
                     this.score += projectile.degat
                     this.numProjectile++
+                    enemy.addShock()
                     
                     if (enemy.life < 1) {
                         // this.score += enemy.lifeMax
@@ -278,6 +279,11 @@ export class Game {
             rect1.y<rect2.y + rect2.height &&
             rect1.y + rect1.height > rect2.y)
 
+    }
+
+    resize(width, height) {
+        this.width = width
+        this.height = height
     }
     
 }
