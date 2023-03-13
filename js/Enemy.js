@@ -89,7 +89,7 @@ export class Enemy {
 
     addShock() {
         
-        if (this.racer) this.vy -= 8
+        if (this.racer) this.vy -= 6
             
             
     }

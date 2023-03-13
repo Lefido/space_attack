@@ -223,7 +223,7 @@ export class Game {
 
         this.sounds.push(new SoundSirene())
 
-        let numberEnemy = Math.random() * 10
+        let numberEnemy = Math.random() * 10 + 2
         for (let i = 0; i < numberEnemy; i++) {
             let y = (0  - this.player.height) - i * this.player.height
             this.enemys.push(new Enemy(this))
