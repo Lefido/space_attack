@@ -5,6 +5,11 @@ export class Planet {
     constructor(game) {
         this.game = game
         this.markedForDeletion = false;
+        this.rotate = 0
+        var vrTemp = Math.random() > 0.5 ? - Math.random() : Math.random();
+        this.vrTemp = vrTemp / 180
+        this.rotate = 0
+
 
     }
     update() {
@@ -17,11 +22,18 @@ export class Planet {
             this.markedForDeletion = true
         }
 
+        this.rotate += this.vrTemp
     }
     draw(context) {
 
-        context.drawImage(this.image, this.x, this.y, this.width, this.height)
+        context.save();
+
+        context.translate(this.x + this.width / 2, this.y + this.height / 2)
+        context.rotate(this.rotate)
+
+        context.drawImage(this.image, 0 - this.width / 2, 0 - this.height / 2, this.width, this.height)
         
+        context.restore();
     }
 }
 
